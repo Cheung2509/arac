@@ -4,6 +4,7 @@
 """Unittest runner script for arac."""
 
 
+from __future__ import absolute_import
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 

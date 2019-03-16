@@ -4,6 +4,8 @@
 """Common functionality used by unittests."""
 
 
+from __future__ import absolute_import
+from six.moves import zip
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 

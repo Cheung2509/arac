@@ -4,6 +4,8 @@
 """Unittests for the arac.pybrainbridge module."""
 
 
+from __future__ import absolute_import
+from six.moves import range
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 
@@ -216,7 +218,7 @@ class TestOptimizers(TestCase):
     def testSimpleBackprop(self):
         ds = arac.cppbridge.SupervisedSimpleDataset(1, 1)
         # Add some data points to the dataset.
-        for _ in xrange(5):
+        for _ in range(5):
             ds.append(scipy.random.random(1), scipy.random.random(1))
 
         l1 = arac.cppbridge.LinearLayer(1)
@@ -227,7 +229,7 @@ class TestOptimizers(TestCase):
         con = arac.cppbridge.FullConnection(l1, l2)
         net.add_connection(con)
         optimizer = arac.cppbridge.SimpleBackprop(net, ds)
-        for _ in xrange(10):
+        for _ in range(10):
             optimizer.train_stochastic()
         
         

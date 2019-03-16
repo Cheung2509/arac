@@ -14,6 +14,7 @@ counterparts.
 """
 
 
+from __future__ import absolute_import
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 
@@ -184,7 +185,7 @@ class PybrainAracMapper(object):
         try:
             incoming = self.map[con.inmod]
             outgoing = self.map[con.outmod]
-        except KeyError, e:
+        except KeyError as e:
             raise ValueError("Connection of unknown modules: %s" % e)
         try:
             proxy = self.map[con]
@@ -201,7 +202,7 @@ class PybrainAracMapper(object):
         try:
             incoming = self.map[con.inmod]
             outgoing = self.map[con.outmod]
-        except KeyError, e:
+        except KeyError as e:
             raise ValueError("Connection of unknown modules: %s" % e)
         try:
             proxy = self.map[con]

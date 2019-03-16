@@ -4,6 +4,8 @@
 """Unittests for the arac.pybrainbridge module."""
 
 
+from __future__ import absolute_import
+from six.moves import range
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 
@@ -54,13 +56,13 @@ class NetworkTestCase(TestCase):
 
     def equivalence_recurrent(self, net, _net):
         self.sync(net, _net)
-        for i in xrange(self.runs):
+        for i in range(self.runs):
             inpt = scipy.random.random(net.indim)
             pybrain_res = net.activate(inpt)
             arac_res = _net.activate(inpt)
             self.assertArrayNear(pybrain_res, arac_res)
 
-        for _ in xrange(self.runs):
+        for _ in range(self.runs):
             error = scipy.random.random(net.outdim)
             pybrain_res = net.backActivate(error)
             arac_res = _net.backActivate(error)
@@ -72,13 +74,13 @@ class NetworkTestCase(TestCase):
         _net.reset()
         self.assert_((_net.inputbuffer == 0.).all())
         
-        for _ in xrange(self.runs):
+        for _ in range(self.runs):
             inpt = scipy.random.random(net.indim)
             pybrain_res = net.activate(inpt)
             arac_res = _net.activate(inpt)
             self.assertArrayNear(pybrain_res, arac_res)
 
-        for _ in xrange(self.runs):
+        for _ in range(self.runs):
             error = scipy.random.random(net.outdim)
             pybrain_res = net.backActivate(error)
             arac_res = _net.backActivate(error)
@@ -90,7 +92,7 @@ class NetworkTestCase(TestCase):
                         
     def equivalence_feed_forward(self, net, _net):
         self.sync(net, _net)
-        for _ in xrange(self.runs):
+        for _ in range(self.runs):
             inpt = scipy.random.random(net.indim)
             pybrain_res = net.activate(inpt)
             arac_res = _net.activate(inpt)
@@ -347,7 +349,7 @@ class TestNetworkEquivalence(NetworkTestCase):
         try:
             copied = net.copy()
             success = True
-        except TypeError, e:
+        except TypeError as e:
             success = False
             self.assert_(success, e)
         

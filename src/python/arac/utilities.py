@@ -6,6 +6,10 @@ everyday work with arac.
 """
 
 
+from __future__ import absolute_import
+from six.moves import range
+from six.moves import zip
+from functools import reduce
 __author__ = 'Justin S Bayer, bayer.justin@googlemail.com'
 
 
@@ -45,8 +49,8 @@ def block_permutation(shape, blockshape):
             for j in range(chunklength):
                 this_coords.append(i % maxindex)
         dims.append(this_coords)
-    coords = zip(*dims)
-    return sorted(range(product(shape)), key=lambda x: coords[x])
+    coords = list(zip(*dims))
+    return sorted(list(range(product(shape))), key=lambda x: coords[x])
 
 
 def params_by_network(network):
